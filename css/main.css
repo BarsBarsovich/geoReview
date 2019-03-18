@@ -1,0 +1,188 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+}
+
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+.logo {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+}
+
+
+.modal {
+    height: auto;
+    width: 380px;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 100;
+    top: 100px;
+    left: 100px;
+    opacity: 0;
+    /*display: none;*/
+}
+
+.modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 47px;
+    background: #ff8663;
+    padding: 0 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.modal__item,
+.modal__form {
+    padding: 0 16px;
+}
+
+.modal__container {
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.modal__item-header {
+    display: flex;
+    align-items: center;
+}
+
+.modal__title {
+    color: #fff;
+    font-size: 12px;
+    font-family: "FiraSans";
+    color: rgb(255, 255, 255);
+}
+
+.modal__item-name {
+    font-size: 16px;
+    font-family: "FiraSans";
+    color: rgb(79, 79, 79);
+}
+
+
+.modal__text {
+    resize: none;
+}
+
+.modal__item-place,
+.modal__item-date {
+    padding-left: 7px;
+    font-size: 16px;
+    font-family: "FiraSans";
+    color: rgba(79, 79, 79, 0.749);
+}
+
+.modal__item:last-child {
+    padding-bottom: 30px;
+}
+
+.modal__form {
+    margin-top: 20px;
+}
+
+.modal__form-title {
+    font-size: 16px;
+    font-family: "FiraSans";
+    color: rgb(255, 134, 99);
+    text-transform: uppercase;
+}
+
+.modal__form-input {
+    width: 90%;
+    border-radius: 32px;
+    border: 1px solid #c4c4c4;
+    outline: none;
+    margin-top: 17px;
+    height: 36px;
+    padding: 0 12px;
+}
+
+.modal__text {
+    margin-top: 17px;
+    width: 90%;
+    min-height: 135px;
+    height: auto;
+    border-radius: 32px;
+    border: 1px solid #c4c4c4;
+    padding: 12px 12px;
+    outline: none;
+    font-size: 15px;
+    font-family: "FiraSans";
+    color: rgb(159, 159, 159);
+    /*line-height: 1.467;*/
+}
+
+.send {
+    margin-top: 17px;
+    border-radius: 10px;
+    background-color: rgb(255, 134, 99);
+    width: 87px;
+    height: 30px;
+    font-size: 12px;
+    font-family: "FiraSans";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    text-align: center;
+    border:none;
+    outline: none;
+}
+
+.send::-webkit-input-placeholder {
+    padding-top: 10px;
+    font-size: 12px;
+    font-family: "FiraSans";
+    color: rgb(255, 255, 255);
+}
+
+.send::-moz-input-placeholder {
+    padding-top: 10px;
+    font-size: 12px;
+    font-family: "FiraSans";
+    color: rgb(255, 255, 255);
+}
+
+.send:-moz-input-placeholder {
+    padding-top: 10px;
+    font-size: 12px;
+    font-family: "FiraSans";
+    color: rgb(255, 255, 255);
+}
+
+.send:-ms-input-placeholder {
+    padding-top: 10px;
+    font-size: 12px;
+    font-family: "FiraSans";
+    color: rgb(255, 255, 255);
+}
+
+.modal__form-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 90%;
+    margin-bottom: 30px;
+}

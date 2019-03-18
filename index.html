@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<div class="wrapper">
+
+    <div id="map">
+
+    </div>
+    <img src="./img/logo.png" alt="" class="logo">
+    <div class="modal">
+        <div class="modal__header">
+            <p class="modal__title">
+
+            </p>
+            <div class="modal__close" id="close">
+                <img src="./img/close.png" alt="">
+            </div>
+        </div>
+        <div class="modal__reviews">
+            <div class="modal__container">
+                <div class="modal__list">
+                </div>
+            </div>
+        </div>
+        <div class="modal__form">
+            <p class="modal__form-title">ваш отзыв</p>
+            <input type="text" class="modal__form-input modal__name" placeholder="Имя" id="name">
+            <input type="text" class="modal__form-input modal__name" placeholder="Укажите место" id="place">
+            <textarea class="modal__text" placeholder="Поделитесь впечатлениями" id="emotions">
+
+            </textarea>
+            <div class="modal__form-container">
+                <button class="send" id="submit"> Добавить</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=a12a46f5-75b0-41a4-96e9-c58b0d5f7a44&lang=ru_RU"
+        type="text/javascript"></script>
+<script src="./src/main.js"></script>
+</body>
+</html>
