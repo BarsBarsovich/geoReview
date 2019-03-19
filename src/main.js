@@ -36,11 +36,19 @@ function initMap() {
 function addListeners(myMap) {
     myMap.events.add('click', event => openModal(event));
     objectManager.objects.events.add(['click'], openModal);
-    objectManager.clusters.events.add(['click'], onClusterEvent);
+    // objectManager.clusters.events.add(['click'], onClusterEvent);
+    // objectManager.objects.events.add(['click'], onObjectEvent);
+    objectManager.clusters.events.add('balloonopen', (event)=> {
+        const links = document.querySelectorAll('.slider__link');
+        for (let currentLink of links){
+            currentLink.addEventListener('click', () => {
+                // нам надо показать попап с добавлением отзыва, по этому месту
+                const coords = event.originalEvent.currentTarget.getAll()[0].geometry.coordinates;
+                showModal(coords[0], coords[1], true);
+            })
 
-    if (myMap.balloon.isOpen()) {
-        console.log('ffffffffffffffff');
-    }
+        }
+    });
 
 
     const closeBtn = document.getElementById('close');
@@ -54,21 +62,6 @@ function addListeners(myMap) {
 
     sendButton.addEventListener('click', sendForm);
 }
-
-function onClusterEvent(event) {
-
-    console.log(event);
-    console.log(event.get('coords'));
-
-    setTimeout(() => {
-        const link = document.querySelector('.slider__link');
-        link.addEventListener('click', () => {
-            // нам надо показать попап с добавлением отзыва, по этому месту
-            showModal(event.get('coords')[0],event.get('coords')[1]);
-        })
-    }, 100);
-}
-
 
 function sendForm() {
     const name = document.getElementById('name').value;
@@ -210,7 +203,11 @@ function openEmtyModal(event) {
         });
 }
 
-function showModal(posX, posY) {
+function showModal(posX, posY, clear = false) {
+    if (clear){
+        clearInputs();
+        document.querySelector('.modal__list').innerHTML = '';
+    }
     const modal = document.querySelector('.modal');
     const windowHeight = document.body.clientHeight;
     const windowWidth = document.body.clientWidth;
