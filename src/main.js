@@ -36,6 +36,11 @@ function initMap() {
 function addListeners(myMap) {
     myMap.events.add('click', event => openModal(event));
     objectManager.objects.events.add(['click'], openModal);
+    objectManager.clusters.events.add(['click'], onClusterEvent);
+
+    if (myMap.balloon.isOpen()) {
+        console.log('ffffffffffffffff');
+    }
 
 
     const closeBtn = document.getElementById('close');
@@ -48,6 +53,20 @@ function addListeners(myMap) {
     const sendButton = document.getElementById('submit');
 
     sendButton.addEventListener('click', sendForm);
+}
+
+function onClusterEvent(event) {
+
+    console.log(event);
+    console.log(event.get('coords'));
+
+    setTimeout(() => {
+        const link = document.querySelector('.slider__link');
+        link.addEventListener('click', () => {
+            // нам надо показать попап с добавлением отзыва, по этому месту
+            showModal(event.get('coords')[0],event.get('coords')[1]);
+        })
+    }, 100);
 }
 
 
@@ -122,7 +141,10 @@ function addPlacemark(placemark) {
 }
 
 function openModal(event) {
+
+    console.log(event.target);
     clearInputs();
+
     event.get('objectId') >= 0 ? openReviews(event) : openEmtyModal(event)
 }
 
@@ -194,15 +216,6 @@ function showModal(posX, posY) {
     const windowWidth = document.body.clientWidth;
     const modalHeight = modal.clientHeight;
     const modalWidth = modal.clientWidth;
-
-
-    // if (posX + modalWidth > windowWidth) {
-    //     posX -= modalWidth;
-    // }
-    //
-    // if (posY + modalHeight > windowHeight) {
-    //     posY -= modalHeight;
-    // }
 
     modal.style.left = `${posX}px`;
     modal.style.top = `${posY}px`;
