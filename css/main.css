@@ -16,7 +16,7 @@ body {
 .wrapper {
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
     position: relative;
 }
 
@@ -41,8 +41,7 @@ body {
     z-index: 100;
     top: 100px;
     left: 100px;
-    opacity: 0;
-    /*display: none;*/
+    display: none;
 }
 
 .modal__header {

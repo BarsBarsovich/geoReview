@@ -196,17 +196,17 @@ function showModal(posX, posY) {
     const modalWidth = modal.clientWidth;
 
 
-    if (posX + modalWidth > windowWidth) {
-        posX -= modalWidth;
-    }
-
-    if (posY + modalHeight > windowHeight) {
-        posY -= modalHeight;
-    }
+    // if (posX + modalWidth > windowWidth) {
+    //     posX -= modalWidth;
+    // }
+    //
+    // if (posY + modalHeight > windowHeight) {
+    //     posY -= modalHeight;
+    // }
 
     modal.style.left = `${posX}px`;
     modal.style.top = `${posY}px`;
-    modal.style.opacity = '1';
+    modal.style.display = 'block';
 }
 
 function getClickCoords(coords) {
