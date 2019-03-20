@@ -36,19 +36,26 @@ function initMap() {
 function addListeners(myMap) {
     myMap.events.add('click', event => openModal(event));
     objectManager.objects.events.add(['click'], openModal);
-    // objectManager.clusters.events.add(['click'], onClusterEvent);
-    // objectManager.objects.events.add(['click'], onObjectEvent);
-    objectManager.clusters.events.add('balloonopen', (event)=> {
-        const links = document.querySelectorAll('.slider__link');
-        for (let currentLink of links){
-            currentLink.addEventListener('click', () => {
-                // нам надо показать попап с добавлением отзыва, по этому месту
-                const coords = event.originalEvent.currentTarget.getAll()[0].geometry.coordinates;
-                showModal(coords[0], coords[1], true);
-            })
+    // objectManager.clusters.events.add('balloonopen', (event)=> {
+    //     const links = document.querySelectorAll('.slider__link');
+    //     for (let currentLink of links){
+    //         currentLink.addEventListener('click', () => {
+    //             // нам надо показать попап с добавлением отзыва, по этому месту
+    //             const coords = event.originalEvent.currentTarget.getAll()[0].geometry.coordinates;
+    //             showModal(coords[0], coords[1], true);
+    //         })
+    //
+    //     }
+    // });
 
+    // Красиво не получилось, поэтому будем ловить события на всплытии)
+    document.addEventListener('click', event => {
+        // это та самая ссылка
+        if (event.target.classList.contains('slider__link')) {
+            event.preventDefault();
+            const address = getCoordsByAdrress(event.target.innerText);
         }
-    });
+    })
 
 
     const closeBtn = document.getElementById('close');
@@ -135,11 +142,22 @@ function addPlacemark(placemark) {
 
 function openModal(event) {
 
-    console.log(event.target);
+    console.log('Target', event.target);
     clearInputs();
 
     event.get('objectId') >= 0 ? openReviews(event) : openEmtyModal(event)
 }
+
+
+function getCoordsByAdrress(address){
+    reviews.forEach((reviewItem)=>{
+        if (reviewItem.address === address){
+            console.log('targetItem', reviewItem);
+            showModal(reviewItem.coords[0],reviewItem.coords[1], true);
+        }
+    });
+}
+
 
 function clearInputs() {
     document.getElementById('name').value = '';
@@ -204,7 +222,7 @@ function openEmtyModal(event) {
 }
 
 function showModal(posX, posY, clear = false) {
-    if (clear){
+    if (clear) {
         clearInputs();
         document.querySelector('.modal__list').innerHTML = '';
     }
